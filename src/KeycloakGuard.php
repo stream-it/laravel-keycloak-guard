@@ -131,7 +131,8 @@ class KeycloakGuard implements Guard
       }
     } else {
       $class = $this->provider->getModel();
-      $user = new $class();
+
+      $user = new $class((array) $this->decodedToken);
     }
 
     $this->setUser($user);
